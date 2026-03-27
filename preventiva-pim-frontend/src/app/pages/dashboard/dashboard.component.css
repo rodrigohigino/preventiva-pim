@@ -1,0 +1,92 @@
+h2 {
+  color: #007acc;
+}
+
+.loading {
+  font-size: 18px;
+  color: #555;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card {
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.08);
+  background: #fff;
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.card p {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #1a1a1a;
+}
+
+.table-section table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-section th,
+.table-section td {
+  border: 1px solid #eee;
+  padding: 8px;
+  text-align: left;
+}
+
+.table-section th {
+  background: #f5f5f5;
+}
+
+.chart-section {
+  margin-bottom: 24px;
+}
+
+.bar-graph {
+  display: grid;
+  gap: 10px;
+}
+
+.bar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bar-label {
+  flex: 0 0 110px;
+  font-size: 14px;
+  color: #333;
+}
+
+.bar-wrapper {
+  flex: 1;
+  height: 14px;
+  background-color: #f1f2f3;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #2196f3);
+}
+
+.bar-value {
+  width: 44px;
+  text-align: right;
+  font-weight: bold;
+}

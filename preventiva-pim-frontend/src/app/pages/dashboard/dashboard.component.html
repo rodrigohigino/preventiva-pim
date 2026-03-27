@@ -1,0 +1,66 @@
+<h1>Dashboard</h1>
+
+<div *ngIf="carregando" class="loading">Carregando dados...</div>
+
+<div *ngIf="!carregando && errorMessage" class="error">{{ errorMessage }}</div>
+
+<div *ngIf="!carregando && !dados && !errorMessage" class="loading">Nenhum dado disponível.</div>
+
+<div *ngIf="!carregando && dados">
+  <section class="chart-section">
+    <h3>Visão geral (gráfico de barras)</h3>
+    <div class="bar-graph">
+      <div *ngFor="let item of chartData" class="bar-item">
+        <span class="bar-label">{{ item.label }}</span>
+        <div class="bar-wrapper">
+          <div class="bar-fill" [style.width.%]="item.value > 100 ? 100 : item.value"></div>
+        </div>
+        <span class="bar-value">{{ item.value }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="summary-cards">
+    <article class="card">
+      <h3>Atrasados</h3>
+      <p>{{ dados.atrasados }}</p>
+    </article>
+    <article class="card">
+      <h3>Previstos próximos 7 dias</h3>
+      <p>{{ dados.previstos_7_dias }}</p>
+    </article>
+    <article class="card">
+      <h3>Conformidade do mês</h3>
+      <p>{{ dados.conformidade_mes }}%</p>
+    </article>
+    <article class="card">
+      <h3>Execuções no mês</h3>
+      <p>{{ dados.execucoes_mes }}</p>
+    </article>
+  </section>
+
+  <section class="table-section">
+    <h3>Planos atrasados</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Equipamento</th>
+          <th>Título</th>
+          <th>Próxima</th>
+          <th>Dias atraso</th>
+          <th>Técnico</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of dados.lista_atrasados">
+          <td>{{ p.codigo_equipamento }}</td>
+          <td>{{ p.titulo }}</td>
+          <td>{{ p.proxima_em || '---' }}</td>
+          <td>{{ p.dias_atraso }}</td>
+          <td>{{ p.tecnico || '-' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+

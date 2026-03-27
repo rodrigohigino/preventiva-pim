@@ -1,0 +1,134 @@
+/* Layout geral */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background-color: #007acc;
+  color: white;
+  padding: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+.sidebar nav a {
+  margin: 8px 0;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.sidebar nav a.active {
+  text-decoration: underline;
+}
+
+/* Botão de alternância de tema */
+.theme-toggle {
+  margin-top: 20px;
+  padding: 8px;
+  background-color: #005fa3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background-color: #004a80;
+}
+
+/* Conteúdo principal */
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f4f6f8;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Botão hambúrguer */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .content {
+    margin-top: 50px;
+  }
+}
+
+/* 🌙 Dark Mode */
+.layout.dark-mode {
+  background-color: #1e1e1e;
+  color: #ddd;
+}
+
+.layout.dark-mode .sidebar {
+  background-color: #333;
+}
+
+.layout.dark-mode .content {
+  background-color: #2a2a2a;
+  color: #ddd;
+}
+
+.layout.dark-mode .theme-toggle {
+  background-color: #555;
+  color: #ddd;
+}
+
+.layout.dark-mode .theme-toggle:hover {
+  background-color: #444;
+}
+
+/* 🌙 Ajuste global para inputs no dark mode */
+.layout.dark-mode input,
+.layout.dark-mode textarea,
+.layout.dark-mode select {
+  color: #000;            /* texto sempre preto */
+  background-color: #fff; /* fundo branco */
+  border: 1px solid #ccc; /* borda neutra */
+}

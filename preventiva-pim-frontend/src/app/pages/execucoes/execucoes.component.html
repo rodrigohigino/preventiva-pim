@@ -1,0 +1,56 @@
+<h2>Registro de Execuções</h2>
+
+<div class="preload-summary" *ngIf="planos?.length || equipamentos?.length">
+  <p>Planos carregados: {{ planos.length }}</p>
+  <p>Equipamentos carregados: {{ equipamentos.length }}</p>
+</div>
+
+<div class="messages">
+  <div class="success" *ngIf="mensagemSucesso">{{ mensagemSucesso }}</div>
+  <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+</div>
+
+<form (ngSubmit)="registrar()">
+  <label>Plano de manutenção</label>
+  <select name="plano_id" [(ngModel)]="novoRegistro.plano_id" (change)="carregarExecucoesPorPlano()" required>
+    <option [value]="0" disabled>Selecione um plano</option>
+    <option *ngFor="let p of planos" [value]="p.id">{{ p.equipamento?.nome || p.titulo }} - {{ p.titulo }}</option>
+  </select>
+
+  <label>Data de execução</label>
+  <input name="data_execucao" type="date" [(ngModel)]="novoRegistro.data_execucao" required />
+
+  <label>Status</label>
+  <select name="status" [(ngModel)]="novoRegistro.status" required>
+    <option value="realizada">Realizada</option>
+    <option value="parcial">Parcial</option>
+    <option value="nao_realizada">Não realizada</option>
+  </select>
+
+  <label>Observações</label>
+  <textarea name="observacoes" [(ngModel)]="novoRegistro.observacoes" placeholder="Observações (opcional)"></textarea>
+
+  <button type="submit">Salvar execução</button>
+</form>
+
+<section *ngIf="execucoes.length">
+  <h3>Últimas execuções do plano selecionado</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Status</th>
+        <th>Conformidade</th>
+        <th>Observações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of execucoes">
+        <td>{{ e.data_execucao | date:'yyyy-MM-dd' }}</td>
+        <td>{{ e.status }}</td>
+        <td>{{ e.conformidade ? 'Sim' : 'Não' }}</td>
+        <td>{{ e.observacoes || '-' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

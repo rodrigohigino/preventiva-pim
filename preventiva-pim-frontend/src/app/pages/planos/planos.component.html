@@ -1,0 +1,31 @@
+<h2>Planos de Manutenção</h2>
+
+<ul>
+  <li *ngFor="let p of planos">
+    {{ p.equipamento?.nome || '??' }} - {{ p.titulo }} - {{ p.descricao }} - Próxima: {{ p.proxima_em | date:'yyyy-MM-dd' }}
+    <button (click)="excluir(p.id)">Excluir</button>
+  </li>
+</ul>
+
+<h3>Novo Plano</h3>
+<form (ngSubmit)="salvar()">
+  <label>Equipamento:</label>
+  <select [(ngModel)]="novoPlano.equipamento_id" name="equipamento_id" required>
+    <option [value]="0" disabled>Selecione</option>
+    <option *ngFor="let e of equipamentos" [value]="e.id">{{ e.codigo }} - {{ e.nome }}</option>
+  </select>
+
+  <label>Título:</label>
+  <input [(ngModel)]="novoPlano.titulo" name="titulo" placeholder="Título" required />
+
+  <label>Descrição:</label>
+  <input [(ngModel)]="novoPlano.descricao" name="descricao" placeholder="Descrição (opcional)" />
+
+  <label>Periodicidade (dias):</label>
+  <input [(ngModel)]="novoPlano.periodicidade_dias" name="periodicidade_dias" type="number" min="1" required />
+
+  <label>Data Inicial:</label>
+  <input [(ngModel)]="novoPlano.data_inicial" name="data_inicial" type="date" required />
+
+  <button type="submit">Salvar</button>
+</form>
