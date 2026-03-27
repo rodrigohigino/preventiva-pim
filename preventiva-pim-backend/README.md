@@ -17,7 +17,7 @@ Stack: **Node.js 20 + TypeScript + Express + TypeORM + PostgreSQL + Docker**
 ### 1. Clone e configure o ambiente
 
 ```bash
-git clone https://github.com/seu-usuario/preventiva-pim-backend.git
+git clone https://github.com/rodrigohigino/preventiva-pim-backend.git
 cd preventiva-pim-backend
 
 cp .env.example .env

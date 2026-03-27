@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import './config/env.js'; // valida .env antes de tudo
 import express from 'express';
 import cors from 'cors';
+import authRouter from './routes/auth.routes.js';
 
 import { env } from './config/env.js';
 import { connectDatabase } from './database/data-source.js';
@@ -16,6 +17,10 @@ app.use(express.json());
 
 // ── Rotas ─────────────────────────────────────────────────────
 app.use('/api', routes);
+
+// Prefixo da rota
+app.use('/auth', authRouter);
+
 
 // Health check
 app.get('/health', (_req, res) => res.json({ status: 'ok' }));
