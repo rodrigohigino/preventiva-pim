@@ -1,0 +1,24 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Docker
+*.log
+*.pid
+*.sock
+tmp/
+.env
+
+# Postgres
+*.sql
+*.dump
+
+# Build/Dist
+dist/
+build/
+
+# Arquivos grandes
+*.zip
+*.tar
+*.gz
