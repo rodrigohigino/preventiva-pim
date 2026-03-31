@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
@@ -23,9 +24,13 @@ export class EquipamentosComponent implements OnInit {
   mensagem = '';
   erro = '';
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private router: Router) {}
 
   ngOnInit() {
+    if (!this.api.isAuthenticated) {
+      this.router.navigate(['/login']);
+      return;
+    }
     this.load();
   }
 

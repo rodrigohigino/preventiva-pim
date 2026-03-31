@@ -1,11 +1,59 @@
-h2 { margin-bottom: 0.75rem; }
-form { margin-bottom: 1.5rem; display: grid; gap: 0.75rem; max-width: 560px; }
-label { font-weight: 600; }
-input, select, textarea { padding: 0.6rem; border: 1px solid #ccc; border-radius: 4px; }
-button { width: fit-content; padding: 0.6rem 1.1rem; background: #007bff; border: none; color: #fff; border-radius: 4px; }
-.messages { margin-bottom: 0.8rem; }
-.success { color: #1f7a1f; }
-.error { color: #c72f2f; }
-table { width: 100%; border-collapse: collapse; }
-th, td { border: 1px solid #ddd; padding: 0.4rem; text-align: left; }
-th { background: #f4f4f4; }
+h2 {
+    margin-bottom: 0.75rem;
+}
+
+form {
+    margin-bottom: 1.5rem;
+    display: grid;
+    gap: 0.75rem;
+    max-width: 560px;
+}
+
+label {
+    font-weight: 600;
+}
+
+input,
+select,
+textarea {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: fit-content;
+    padding: 0.6rem 1.1rem;
+    background: hsl(99, 93%, 17%);
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.messages {
+    margin-bottom: 0.8rem;
+}
+
+.success {
+    color: #1f7a1f;
+}
+
+.error {
+    color: #c72f2f;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 0.4rem;
+    text-align: left;
+}
+
+th {
+    background: #f4f4f4;
+}

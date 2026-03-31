@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
@@ -20,9 +21,14 @@ export class PlanosComponent implements OnInit {
     periodicidade_dias: 30,
     data_inicial: new Date().toISOString().split('T')[0],
   };
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private router: Router) {}
 
   ngOnInit() {
+    if (!this.api.isAuthenticated) {
+      this.router.navigate(['/login']);
+      return;
+    }
+
     this.load();
     this.loadEquipamentos();
   }

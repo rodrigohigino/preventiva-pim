@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
@@ -10,11 +10,17 @@ import { ApiService } from '../../services/api.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   email = '';
   senha = '';
 
   constructor(private api: ApiService, private router: Router) {}
+
+  ngOnInit(): void {
+    if (this.api.isAuthenticated) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
 
   login() {
     this.api.login(this.email, this.senha).subscribe({
