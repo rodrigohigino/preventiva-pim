@@ -11,7 +11,7 @@ body {
 
 /* Cabeçalho */
 header {
-  background-color: #116104;
+  background-color: rgb(33, 33, 35);
   color: white;
   padding: 15px;
 }

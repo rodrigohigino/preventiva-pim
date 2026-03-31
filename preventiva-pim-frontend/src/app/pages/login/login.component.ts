@@ -13,8 +13,21 @@ import { ApiService } from '../../services/api.service';
 export class LoginComponent implements OnInit {
   email = '';
   senha = '';
+  mouseX = 50;
+  mouseY = 50;
 
   constructor(private api: ApiService, private router: Router) {}
+
+  onMouseMove(event: MouseEvent): void {
+    this.mouseX = (event.clientX / window.innerWidth) * 100;
+    this.mouseY = (event.clientY / window.innerHeight) * 100;
+  }
+
+  getBlobTransform(factor: number): string {
+    const x = (this.mouseX - 50) * factor;
+    const y = (this.mouseY - 50) * factor;
+    return `translate(${x}px, ${y}px)`;
+  }
 
   ngOnInit(): void {
     if (this.api.isAuthenticated) {
