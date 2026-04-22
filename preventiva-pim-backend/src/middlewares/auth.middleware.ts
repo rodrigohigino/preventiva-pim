@@ -34,3 +34,13 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction):
     res.status(401).json({ message: 'Token inválido ou expirado' });
   }
 }
+export function requirePerfil(...perfis: string[]) {
+  return (req: Request, res: Response, next: NextFunction): void => {
+    const perfil = req.usuario?.perfil;
+    if (!perfil || !perfis.includes(perfil)) {
+      res.status(403).json({ message: 'Acesso negado: perfil sem permissão' });
+      return;
+    }
+    next();
+  };
+}

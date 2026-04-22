@@ -57,4 +57,17 @@ export class ExecucaoService {
       order: { data_execucao: 'DESC' },
     });
   }
+
+  async remover(id: number): Promise<void> {
+    const execucao = await this.execRepo.findOne({
+      where: { id },
+      relations: { plano: true, tecnico: true },
+    });
+
+    if (!execucao) {
+      throw new AppError('Execução não encontrada', 404);
+    }
+
+    await this.execRepo.remove(execucao);
+  }
 }

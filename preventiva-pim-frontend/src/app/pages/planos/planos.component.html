@@ -3,7 +3,7 @@
 <ul>
   <li *ngFor="let p of planos">
     {{ p.equipamento?.nome || '??' }} - {{ p.titulo }} - {{ p.descricao }} - Próxima: {{ p.proxima_em | date:'yyyy-MM-dd' }}
-    <button (click)="excluir(p.id)">Excluir</button>
+    <button *ngIf="perfilUsuario !== 'tecnico'" (click)="excluir(p.id)">Excluir</button>
   </li>
 </ul>
 

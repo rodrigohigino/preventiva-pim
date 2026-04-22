@@ -24,6 +24,8 @@ export class EquipamentosComponent implements OnInit {
   mensagem = '';
   erro = '';
 
+  perfilUsuario: string | null = null;
+
   constructor(private api: ApiService, private router: Router) {}
 
   ngOnInit() {
@@ -31,6 +33,8 @@ export class EquipamentosComponent implements OnInit {
       this.router.navigate(['/login']);
       return;
     }
+
+    this.perfilUsuario = this.api.getCurrentUserPerfil();
     this.load();
   }
 

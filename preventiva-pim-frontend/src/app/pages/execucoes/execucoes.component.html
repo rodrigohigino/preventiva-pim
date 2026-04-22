@@ -42,6 +42,7 @@
         <th>Status</th>
         <th>Conformidade</th>
         <th>Observações</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -50,6 +51,9 @@
         <td>{{ e.status }}</td>
         <td>{{ e.conformidade ? 'Sim' : 'Não' }}</td>
         <td>{{ e.observacoes || '-' }}</td>
+        <td>
+          <button type="button" (click)="excluir(e.id)">Excluir</button>
+        </td>
       </tr>
     </tbody>
   </table>

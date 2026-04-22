@@ -118,6 +118,10 @@ export class ApiService {
     return this.http.delete(`${this.baseUrl}/planos/${id}`);
   }
 
+  deleteExecucao(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/execucoes/${id}`);
+  }
+
   createExecucao(execucao: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/execucoes`, execucao);
   }
@@ -133,6 +137,18 @@ export class ApiService {
     try {
       const payload = JSON.parse(atob(this.token.split('.')[1]));
       return payload?.sub ?? null;
+    } catch {
+      return null;
+    }
+  }
+
+  getCurrentUserPerfil(): string | null {
+    if (!this.token) {
+      return null;
+    }
+    try {
+      const payload = JSON.parse(atob(this.token.split('.')[1]));
+      return payload?.perfil ?? null;
     } catch {
       return null;
     }

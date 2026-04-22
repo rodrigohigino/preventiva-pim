@@ -111,4 +111,22 @@ export class ExecucoesComponent implements OnInit {
       }
     });
   }
+
+  excluir(id: number): void {
+    if (!confirm('Deseja excluir esta execução?')) {
+      return;
+    }
+
+    this.api.deleteExecucao(id).subscribe({
+      next: () => {
+        this.mensagemSucesso = 'Execução removida com sucesso.';
+        this.errorMessage = '';
+        this.carregarExecucoesPorPlano();
+      },
+      error: (err) => {
+        this.mensagemSucesso = '';
+        this.errorMessage = 'Erro ao excluir execução: ' + (err?.error?.message ?? err?.message ?? '');
+      }
+    });
+  }
 }

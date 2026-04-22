@@ -21,6 +21,8 @@ export class PlanosComponent implements OnInit {
     periodicidade_dias: 30,
     data_inicial: new Date().toISOString().split('T')[0],
   };
+  perfilUsuario: string | null = null;
+
   constructor(private api: ApiService, private router: Router) {}
 
   ngOnInit() {
@@ -29,6 +31,7 @@ export class PlanosComponent implements OnInit {
       return;
     }
 
+    this.perfilUsuario = this.api.getCurrentUserPerfil();
     this.load();
     this.loadEquipamentos();
   }

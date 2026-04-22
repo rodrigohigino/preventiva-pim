@@ -6,7 +6,7 @@
 <ul>
   <li *ngFor="let e of equipamentos">
     {{ e.codigo }} - {{ e.nome }} - {{ e.tipo }} - {{ e.localizacao }}
-    <button (click)="excluir(e.id)">Excluir</button>
+    <button *ngIf="perfilUsuario !== 'tecnico'" (click)="excluir(e.id)">Excluir</button>
   </li>
 </ul>
 

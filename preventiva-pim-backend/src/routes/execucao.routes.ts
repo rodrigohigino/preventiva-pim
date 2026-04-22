@@ -11,4 +11,7 @@ router.post('/', validate(createExecucaoSchema), ExecucaoController.registrar);
 // GET /execucoes/plano/:planoId  — lista execuções de um plano
 router.get('/plano/:planoId', ExecucaoController.listarPorPlano);
 
+// DELETE /execucoes/:id — remove registro de execução
+router.delete('/:id', ExecucaoController.remover);
+
 export default router;

@@ -21,4 +21,13 @@ export const ExecucaoController = {
       next(err);
     }
   },
+
+  async remover(req: Request, res: Response, next: NextFunction) {
+    try {
+      await service.remover(Number(req.params.id));
+      res.status(204).send();
+    } catch (err) {
+      next(err);
+    }
+  },
 };
