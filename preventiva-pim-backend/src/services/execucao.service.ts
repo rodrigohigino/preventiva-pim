@@ -33,6 +33,7 @@ export class ExecucaoService {
       data_execucao: dataExecucao,
       status: data.status,
       observacoes: data.observacoes,
+      data_prevista: plano.proxima_em,
       conformidade,
     });
 

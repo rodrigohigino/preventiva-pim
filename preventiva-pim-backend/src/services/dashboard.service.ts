@@ -32,17 +32,16 @@ export class DashboardService {
 
     // ── 3. Execuções registradas no mês ───────────────────────────
     // Vamos executar várias consultas em paralelo para reduzir latência
-    const [execucoesMes, execucoesConformesMes] = await Promise.all([
-      this.execRepo.count({ where: { data_execucao: Between(inicioMes, fimMes) } }),
-      this.execRepo.count({ where: { data_execucao: Between(inicioMes, fimMes), conformidade: true } }),
-    ]);
+    const execucoesMes = await this.execRepo.find({
+      where: { data_execucao: Between(inicioMes, fimMes) },
+    });
+
+    const execucoesConformesMes = execucoesMes.filter(exec => exec.conformidade).length;
 
     // ── 4. Conformidade do mês ────────────────────────────────────
     // Conformidade = execuções conformes / total de execuções do mês * 100
-
-
     const conformidade =
-      execucoesMes > 0 ? Math.round((execucoesConformesMes / execucoesMes) * 100) : 0;
+      execucoesMes.length > 0 ? Math.round((execucoesConformesMes / execucoesMes.length) * 100) : 0;
 
     // ── Monta lista de atrasados com dias de atraso ───────────────
     const listaAtrasados: PlanoAtrasado[] = planosAtrasados.map((p) => {
@@ -79,7 +78,7 @@ export class DashboardService {
       atrasados: planosAtrasados.length,
       previstos_7_dias: previstos7,
       conformidade_mes: conformidade,
-      execucoes_mes: execucoesMes,
+      execucoes_mes: execucoesMes.length,
       lista_atrasados: listaAtrasados,
     };
   }

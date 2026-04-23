@@ -3,6 +3,7 @@ import { AppDataSource } from './data-source.js';
 import { Usuario } from '../entities/Usuario.js';
 import { Equipamento } from '../entities/Equipamento.js';
 import { PlanoManutencao } from '../entities/PlanoManutencao.js';
+import { ExecucaoManutencao } from '../entities/ExecucaoManutencao.js';
 import bcrypt from 'bcryptjs';
 
 async function seed() {
@@ -121,6 +122,47 @@ async function seed() {
 
   await planoRepo.save(planos);
   console.log('✅  Planos de manutenção criados');
+
+  // ── Execuções de manutenção ────────────────────────────────────
+  const execRepo = AppDataSource.getRepository(ExecucaoManutencao);
+
+  const execucoes = execRepo.create([
+    {
+      plano: planos[0], // Lubrificação Geral - vencido 5 dias atrás
+      tecnico: tecnico,
+      data_execucao: new Date(2026, 3, 10), // Abril 10 (atrasado)
+      status: 'realizada',
+      observacoes: 'Executado com atraso devido à falta de peças.',
+      conformidade: false,
+    },
+    {
+      plano: planos[1], // Inspeção Elétrica - vencido 12 dias atrás
+      tecnico: tecnico,
+      data_execucao: new Date(2026, 3, 15), // Abril 15 (atrasado)
+      status: 'realizada',
+      observacoes: 'Inspeção realizada, tudo OK.',
+      conformidade: false,
+    },
+    {
+      plano: planos[2], // Troca de Fluido - próxima em 3 dias
+      tecnico: tecnico,
+      data_execucao: new Date(2026, 3, 20), // Abril 20 (no prazo)
+      status: 'realizada',
+      observacoes: 'Fluido trocado conforme plano.',
+      conformidade: true,
+    },
+    {
+      plano: planos[3], // Revisão de Filtros - próxima em 15 dias
+      tecnico: tecnico,
+      data_execucao: new Date(2026, 3, 18), // Abril 18 (antecipado)
+      status: 'realizada',
+      observacoes: 'Filtros trocados preventivamente.',
+      conformidade: true,
+    },
+  ]);
+
+  await execRepo.save(execucoes);
+  console.log('✅  Execuções de manutenção criadas');
 
   console.log('\n🌱  Seed concluído com sucesso!');
   console.log('   supervisor@pim.com / senha123');

@@ -38,8 +38,14 @@ export class ExecucaoManutencao {
   observacoes?: string;
 
   /**
+   * Data prevista para a execução (cópia de plano.proxima_em no momento da execução)
+   */
+  @Column({ type: 'date', nullable: true })
+  data_prevista?: Date;
+
+  /**
    * true = manutenção executada conforme o plano (dentro do prazo)
-   * Calculado automaticamente no service: data_execucao <= proxima_em original
+   * Calculado automaticamente no service: data_execucao <= data_prevista
    */
   @Column({ type: 'boolean' })
   conformidade!: boolean;
