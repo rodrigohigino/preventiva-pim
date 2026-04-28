@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "node --max_old_space_size=4096 ./node_modules/.bin/ng build",
+    "build": "ng build",
     "start": "node dist/server.js",
     "typeorm": "tsx ./node_modules/typeorm/cli",
     
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
+    "@angular/cli": "^21.0.0",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.6",
