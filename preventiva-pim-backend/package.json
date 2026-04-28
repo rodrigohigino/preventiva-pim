@@ -5,9 +5,10 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "tsc",
+    "build": "npx ng build",
     "start": "node dist/server.js",
-    "typeorm": "tsx ./node_modules/typeorm/cli"
+    "typeorm": "tsx ./node_modules/typeorm/cli",
+    
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
