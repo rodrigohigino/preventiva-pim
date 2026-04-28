@@ -1,7 +1,7 @@
 {
   "projects": [
     {
-      "rootDirectory": "frontend",
+      "rootDirectory": "preventiva-pim-frontend",
       "framework": null,
       "installCommand": "npm install",
       "buildCommand": "npm run build",
