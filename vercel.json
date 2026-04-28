@@ -1,11 +1,13 @@
 {
-  "projects": [
+  "rootDirectory": "preventiva-pim-frontend",
+  "framework": null,
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/preventiva-pim-frontend",
+  "rewrites": [
     {
-      "rootDirectory": "preventiva-pim-frontend",
-      "framework": null,
-      "installCommand": "npm install",
-      "buildCommand": "npm run build",
-      "outputDirectory": "preventiva-pim-frontend"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
