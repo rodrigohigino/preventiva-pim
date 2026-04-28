@@ -64,10 +64,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "preventiva-pim-frontend:build:production"
+              "buildTarget": "preventiva-pim-frontend:build:production"
             },
             "development": {
-              "browserTarget": "preventiva-pim-frontend:build:development"
+              "buildTarget": "preventiva-pim-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
