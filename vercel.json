@@ -1,7 +1,11 @@
-
 {
-  "framework": null,
-  "installCommand": "npm install",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist/preventiva-pim"
+  "projects": [
+    {
+      "rootDirectory": "frontend",
+      "framework": null,
+      "installCommand": "npm install",
+      "buildCommand": "npm run build",
+      "outputDirectory": "dist/preventiva-pim"
+    }
+  ]
 }
